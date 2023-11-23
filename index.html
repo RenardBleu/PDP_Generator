@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <canvas width="500" height="500" style="background-color: pink"></canvas>
+<h1>Générateur de PDP RB</h1>
+    <canvas width="800" height="800" style="background-color: pink"></canvas>
     <button id="result">Dessiner</button>
     <ul>
         <p>Style</p>
-        <li><button id="style1">Style 1</button></li>
-        <li><button id="style2">Style 2</button></li>
+        <li><button id="style1" onclick="bg_style = fond1;">Style 1</button></li>
+        <li><button id="style2" onclick="bg_style = fond2;">Style 2</button></li>
     </ul>
 </body>
 <script>
@@ -19,17 +20,14 @@
     const b_s1 = document.querySelector("#style1");
     const b_s2 = document.querySelector("#style2");
 
-    const fond1=new Image();
-    const fond2=new Image();
-    const asset=new Image();
+    let fond1=new Image();
+    let fond2=new Image();
+    let asset=new Image();
     fond2.src = "fond/The Big Bang Background.JPG"
     fond1.src = "fond/The Big Bang Lobby Background.JPG";
     asset.src = "Caution Mark Graphic.PNG";
 
     let bg_style = fond1;
-    b_s1.onclick(bg_style = fond1);
-    b_s2.onclick(bg_style = fond2);
-
 
     const canvas = document.querySelector("canvas");
     const ctx = canvas.getContext('2d');
@@ -37,6 +35,12 @@
     result.onclick =function(){
         ctx.drawImage(bg_style,0,0,);
         ctx.drawImage(asset,0,0,200,200);
+        ctx.font = "500px 'Burbank Big Regular'";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("RB",canvas.width/2, canvas.height/2)
+
     }
 
 

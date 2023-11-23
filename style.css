@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'BurbankBigCondensed-Black';
+    src: url('/BurbankBigCondensed-Black.otf') format('opentype');
+}
+*{
+    font-family: "Burbank Small";
+}
 canvas{
     border: 3px solid #232528;
 }
