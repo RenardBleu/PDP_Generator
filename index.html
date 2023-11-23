@@ -6,14 +6,39 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <canvas width="500" height="500"></canvas>
+    <canvas width="500" height="500" style="background-color: pink"></canvas>
+    <button id="result">Dessiner</button>
+    <ul>
+        <p>Style</p>
+        <li><button id="style1">Style 1</button></li>
+        <li><button id="style2">Style 2</button></li>
+    </ul>
 </body>
 <script>
-    bg_styl1 = "https://lh3.googleusercontent.com/d/13NC9rbHEkSft1uQVi6CxAlPLIu7dYCHm=s220"
-    const canvas = document.querySelector("canvas")
-    const ctx = canvas.getContext('2d')
+    const result = document.querySelector("#result");
+    const b_s1 = document.querySelector("#style1");
+    const b_s2 = document.querySelector("#style2");
 
-    ctx.drawImage(bg_styl1, 33, 71, 104, 124, 21, 20, 87, 104);
+    const fond1=new Image();
+    const fond2=new Image();
+    const asset=new Image();
+    fond2.src = "fond/The Big Bang Background.JPG"
+    fond1.src = "fond/The Big Bang Lobby Background.JPG";
+    asset.src = "Caution Mark Graphic.PNG";
+
+    let bg_style = fond1;
+    b_s1.onclick(bg_style = fond1);
+    b_s2.onclick(bg_style = fond2);
+
+
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext('2d');
+
+    result.onclick =function(){
+        ctx.drawImage(bg_style,0,0,);
+        ctx.drawImage(asset,0,0,200,200);
+    }
+
 
 </script>
 </html>
