@@ -24,7 +24,7 @@
     let fond2=new Image();
     let asset=new Image();
     fond2.src = "fond/The Big Bang Background.JPG"
-    fond1.src = "fond/The Big Bang Lobby Background.JPG";
+    fond1.src = "fond/style1.png";
     asset.src = "Caution Mark Graphic.PNG";
 
     let bg_style = fond1;
@@ -33,14 +33,17 @@
     const ctx = canvas.getContext('2d');
 
     result.onclick =function(){
+        ctx.globalCompositeOperation = "source-over";
+        //ctx.filter = "blur(10px)";
         ctx.drawImage(bg_style,0,0,);
         ctx.drawImage(asset,0,0,200,200);
+        ctx.filter = "none";
+        ctx.globalCompositeOperation = "overlay";
         ctx.font = "500px 'Burbank Big Regular'";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("RB",canvas.width/2, canvas.height/2)
-
+        ctx.fillText("RB",canvas.width/2, canvas.height/1.8)
     }
 
 
