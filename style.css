@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'BurbankBigCondensed-Black';
-    src: url(/font/BurbankBigCondensed-Black.otf) format('woff');
+    font-family: 'Burbank';
+    src: url('/font/BurbankBigCondensed-Black.otf') format('opentype');
 }
 *{
     font-family: 'Burbank Big Regular';

@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<h1>Générateur de PDP RB</h1>
-    <canvas width="800" height="800" style="background-color: pink"></canvas>
+<h1>Générateur de PDP</h1>
+    <input type="text" id="initial" placeholder="Initial (max 3 lettres)">
+    <button type="button" onclick="getValue();">Récupérer la valeur</button>
+    <canvas width="800" height="800"></canvas>
     <button id="result">Dessiner</button>
+    <a href="#" id="c_download">Download</a>
     <ul>
         <p>Style</p>
         <li><button id="style1" onclick="bg_style = fond1;">Style 1</button></li>
@@ -16,9 +19,20 @@
     </ul>
 </body>
 <script>
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext('2d');
+
     const result = document.querySelector("#result");
-    const b_s1 = document.querySelector("#style1");
-    const b_s2 = document.querySelector("#style2");
+    const download = document.querySelector("#c_download")
+
+    let initial = "";
+    function getValue() {
+        initial = document.querySelector("#initial").value;
+        console.log(initial.length);
+    }
+
+    let pngDataUrl = canvas.toDataURL("image/png")
+    let dataURL = "#";
 
     let fond1=new Image();
     let fond2=new Image();
@@ -29,8 +43,7 @@
 
     let bg_style = fond1;
 
-    const canvas = document.querySelector("canvas");
-    const ctx = canvas.getContext('2d');
+
 
     result.onclick =function(){
         ctx.globalCompositeOperation = "source-over";
@@ -43,9 +56,23 @@
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("RB",canvas.width/2, canvas.height/1.8)
+        ctx.fillText(initial,canvas.width/2, canvas.height/1.8)
+        pngDataUrl = canvas.toDataURL("image/png")
+        saveCanvasData();
+        download.download = "PDP_" + initial + ".jpeg";
+           // <a download="test.jpeg" href="#" id="c_download">Download</a>
+    };
+
+    download.onclick=function(){
+        if (download.href === "#") {
+        } else {
+            download.href = dataURL;
+        }
     }
 
-
+    function saveCanvasData() {
+        dataURL = canvas.toDataURL('image/jpeg');
+        // Faites quelque chose avec dataURL, comme le téléchargement
+    }
 </script>
 </html>
