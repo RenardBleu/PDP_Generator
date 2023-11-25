@@ -12,6 +12,8 @@ let initial = "";
 let dataURL = "#";
 let bg_style = fond1;
 let name = "";
+let color = "white"
+let txt_style = "source-over"
 
 //Recuperation des element dans le DOM
 
@@ -19,7 +21,10 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
 
 const result = document.querySelector("#result");
-const download = document.querySelector("#c_download")
+const download = document.querySelector("#c_download");
+
+const b_color_red = document.querySelector("#color_red");
+const b_color_blue = document.querySelector("#color_blue");
 
 function getValue() {
     initial = document.querySelector("#initial").value;
@@ -50,14 +55,29 @@ function getValue() {
         drawn()
     }
 }
+b_color_red.onclick = function (){
+    brume.src = "nuage/nuage_red.png";
+    color = "red"
+    txt_style = "source-over"
+    drawn()
+}
+b_color_blue.onclick = function (){
+    brume.src = "nuage/nuage_blue.png";
+    color = "#1288ed";
+    txt_style = "color";
+    drawn();
+}
+
 fond1.onload = function (){
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(bg_style,0,0,);
     ctx.filter = "none";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = color;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = "600px 'Burbank Big Condensed Black'";
+    ctx.shadowBlur = 30;
+    ctx.shadowColor = "rgba(0,0,0,0.4)";
     ctx.fillText("YO",canvas.width/2, canvas.height/1.8)
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(brume,0,0,800,800);
@@ -68,13 +88,16 @@ function drawn(){
     //ctx.filter = "blur(10px)";
     ctx.drawImage(bg_style,0,0,);
     ctx.filter = "none";
-    ctx.globalCompositeOperation = "overlay";
-    ctx.fillStyle = "white";
+    ctx.globalCompositeOperation = txt_style;
+    ctx.fillStyle = color;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
+    ctx.shadowBlur = 30;
+    ctx.shadowColor = "rgba(0,0,0,0.4)";
     ctx.fillText(name.toLocaleUpperCase(),canvas.width/2, canvas.height/1.8)
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(brume,0,0,800,800);
+
     dataURL = canvas.toDataURL("image/png")
     download.download = "PDP_" + initial + ".jpeg";
     // <a download="test.jpeg" href="#" id="c_download">Download</a>
