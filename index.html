@@ -3,76 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>PDP generator</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style_pdp_generator.css">
 </head>
 <body>
 <h1>Générateur de PDP</h1>
     <input type="text" id="initial" placeholder="Initial (max 3 lettres)">
     <button type="button" onclick="getValue();">Récupérer la valeur</button>
     <canvas width="800" height="800"></canvas>
-    <button id="result">Dessiner</button>
+    <button id="result" onclick="drawn();">Dessiner</button>
     <a href="#" id="c_download">Download</a>
     <ul>
         <p>Style</p>
         <li><button id="style1" onclick="bg_style = fond1;">Style 1</button></li>
         <li><button id="style2" onclick="bg_style = fond2;">Style 2</button></li>
+        <div style="display: flex">
+            <input type="checkbox" checked> <p>Text transparent</p>
+        </div>
+
     </ul>
+<script src="/script.js"></script>
 </body>
-<script>
-    const canvas = document.querySelector("canvas");
-    const ctx = canvas.getContext('2d');
-
-    const result = document.querySelector("#result");
-    const download = document.querySelector("#c_download")
-
-    let initial = "";
-    function getValue() {
-        initial = document.querySelector("#initial").value;
-        console.log(initial.length);
-    }
-
-    let pngDataUrl = canvas.toDataURL("image/png")
-    let dataURL = "#";
-
-    let fond1=new Image();
-    let fond2=new Image();
-    let asset=new Image();
-    fond2.src = "fond/The Big Bang Background.JPG"
-    fond1.src = "fond/style1.png";
-    asset.src = "Caution Mark Graphic.PNG";
-
-    let bg_style = fond1;
-
-
-
-    result.onclick =function(){
-        ctx.globalCompositeOperation = "source-over";
-        //ctx.filter = "blur(10px)";
-        ctx.drawImage(bg_style,0,0,);
-        ctx.drawImage(asset,0,0,200,200);
-        ctx.filter = "none";
-        ctx.globalCompositeOperation = "overlay";
-        ctx.font = "500px 'Burbank Big Regular'";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(initial,canvas.width/2, canvas.height/1.8)
-        pngDataUrl = canvas.toDataURL("image/png")
-        saveCanvasData();
-        download.download = "PDP_" + initial + ".jpeg";
-           // <a download="test.jpeg" href="#" id="c_download">Download</a>
-    };
-
-    download.onclick=function(){
-        if (download.href === "#") {
-        } else {
-            download.href = dataURL;
-        }
-    }
-
-    function saveCanvasData() {
-        dataURL = canvas.toDataURL('image/jpeg');
-        // Faites quelque chose avec dataURL, comme le téléchargement
-    }
-</script>
 </html>

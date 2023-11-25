@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Burbank Big Condensed Black";
+    src: url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.eot");
+    src: url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.svg#Burbank Big Condensed Black")format("svg");
+}
+*{
+    font-family: 'Burbank Big Condensed Black';
+}
+canvas{
+    border: 3px solid #232528;
+    /*width: 300px;*/
+}
