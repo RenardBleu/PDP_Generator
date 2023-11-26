@@ -17,6 +17,9 @@ let txt_style = "source-over"
 
 //Recuperation des element dans le DOM
 
+const alert_initial = document.createElement("p").textContent = "Le text ne doit pas être supérieure à 3 lettre";
+alert_initial.className = "alert_initial";
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
 
@@ -25,6 +28,7 @@ const download = document.querySelector("#c_download");
 
 const b_color_red = document.querySelector("#color_red");
 const b_color_blue = document.querySelector("#color_blue");
+const twitter_result = document.querySelector("#twitter_result_img");
 
 function getValue() {
     initial = document.querySelector("#initial").value;
@@ -100,6 +104,7 @@ function drawn(){
 
     dataURL = canvas.toDataURL("image/png")
     download.download = "PDP_" + initial + ".jpeg";
+    twitter_result.src = dataURL
     // <a download="test.jpeg" href="#" id="c_download">Download</a>
 }
 
