@@ -225,6 +225,10 @@ main{
     letter-spacing: 3px;
     padding: 15px;
 }
+.title span{
+    font-size: 1.5rem;
+    font-family: 'Burbank Big Condensed Black';
+}
 
 
 /*Twitter*/
