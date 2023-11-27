@@ -67,9 +67,8 @@ b_color_red.onclick = function (){
 }
 b_color_blue.onclick = function (){
     brume.src = "nuage/nuage_blue.png";
-    color = "#1288ed";
+    color = "#3ba4ff";
     txt_style = "color";
-    drawn();
 }
 
 fond1.onload = function (){
@@ -92,13 +91,18 @@ function drawn(){
     //ctx.filter = "blur(10px)";
     ctx.drawImage(bg_style,0,0,);
     ctx.filter = "none";
-    ctx.globalCompositeOperation = txt_style;
     ctx.fillStyle = color;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.shadowBlur = 30;
-    ctx.shadowColor = "rgba(0,0,0,0.4)";
-    ctx.fillText(name.toLocaleUpperCase(),canvas.width/2, canvas.height/1.8)
+    ctx.filter = "blur(10px)";
+    ctx.strokeStyle = "rgba(0,0,0,0.4)";
+    ctx.lineWidth = 15;
+    ctx.globalCompositeOperation = "source-over";
+    ctx.strokeText(name.toLocaleUpperCase(),canvas.width/2, canvas.height/1.8);
+    ctx.filter = "none";
+    ctx.globalCompositeOperation = txt_style;
+    ctx.fillText(name.toLocaleUpperCase(),canvas.width/2, canvas.height/1.8);
+
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(brume,0,0,800,800);
 

@@ -34,24 +34,28 @@
     </div>
 </header>
 <main>
-    <div class="genrator">
+    <div class="generator">
         <h1 class="title">Modifie ta PDP</h1>
-        <input type="text" id="initial" placeholder="Initial (max 3 lettres)">
-        <button type="button" onclick="getValue();">Récupérer la valeur</button>
-        <canvas width="800" height="800"></canvas>
-        <button id="result" onclick="drawn();">Dessiner</button>
-        <a href="#" id="c_download">Download</a>
-        <ul>
-            <p>Style</p>
-            <li><button id="style1" onclick="bg_style = fond1;">Style 1</button></li>
-            <li><button id="style2" onclick="bg_style = fond2;">Style 2</button></li>
-            <div style="display: flex">
-                <input type="checkbox" id="checkbox_txt_style" checked> <p>Text transparent</p>
+        <div class="contenu">
+            <canvas width="800" height="800"></canvas>
+            <div class="input-initial">
+                <input type="text" id="initial" placeholder="Initial (max 3 lettres)">
+                <button type="button" onclick="getValue();">Envoyer</button>
             </div>
-        </ul>
-        <div>
-            <button id="color_red">Rouge</button>
-            <button id="color_blue">Bleu</button>
+            <button id="result" onclick="drawn();">Dessiner</button>
+            <a href="#" id="c_download">Download</a>
+            <ul>
+                <p>Style</p>
+                <li><button id="style1" onclick="bg_style = fond1;">Style 1</button></li>
+                <li><button id="style2" onclick="bg_style = fond2;">Style 2</button></li>
+                <div style="display: flex">
+                    <input type="checkbox" id="checkbox_txt_style" checked> <p>Text transparent</p>
+                </div>
+            </ul>
+            <div>
+                <button id="color_red">Rouge</button>
+                <button id="color_blue">Bleu</button>
+            </div>
         </div>
     </div>
     <div class="twitter-result">
@@ -67,8 +71,8 @@
             </div>
             <div class="banner"></div>
             <div class="profile">
+                <img width="150px" src="CautionMarkGraphic.PNG" id="twitter_result_img">
                 <div class="profile-top">
-                    <img width="150px" src="CautionMarkGraphic.PNG" id="twitter_result_img">
                     <div class="button">
                         <div class="plus">...</div>
                         <div class="msg"><i class="fa-regular fa-envelope"></i></div>
