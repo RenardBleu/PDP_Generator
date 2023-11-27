@@ -3,6 +3,7 @@
     --bg-color-menu: #232323;
     --text-color-menu: #ffff;
     --main-color: #0090e2;
+    --main-color-fn: #be39da;
     --title-color: #151a1d;
     --main-color--dark: #06376e;
 }
@@ -179,6 +180,7 @@ header {
     justify-content: space-evenly;
     align-items: center;
     padding-bottom: 200px;
+    clip-path: polygon(0 0, 100% 0%, 100% 80%, 50% 100%, 0 80%);
 }
 header div{
     text-align: center;
@@ -210,8 +212,18 @@ header img{
 main{
     top: -220px;
     position: relative;
+    display: grid;
+    width: 100%;
+}
+.sec1{
     display: flex;
-    justify-content: center;
+    margin: auto;
+}
+.sec2{
+    background-color: var(--main-color-fn);
+    clip-path: polygon(0 20%, 100% 0, 100% 90%, 0% 90%);
+    height: 500px;
+    position: relative;
 }
 .title{
     color: var(--text-color-menu);
@@ -405,15 +417,29 @@ main{
 }
 .generator .contenu input[type=text]{
     background-color: var(--bg-color-menu);
-    padding: 10px;
-    width: 9rem;
-    color: var(--main-color);
+    padding: 10px 15px;
+    width: 10rem;
+    color: var(--main-color-fn);
     border-radius: 10px;
-    border: 2px var(--main-color) solid;
+    border: 2px var(--main-color-fn) solid;
+    margin-right: 10px;
+    text-align: center;
 }
 .generator .contenu .input-initial button{
-    border: 2px var(--main-color) solid;
-    padding: 10px;
-    width: 9rem;
+    color: var(--main-color-fn);
     background-color: var(--bg-color-menu);
+    border: 2px var(--main-color-fn) solid;
+    padding: 10px;
+    position: relative;
+    border-radius: 10px;
+    transition: all 0.1s ease-out;
+
+}
+.generator .contenu .input-initial button:hover{
+    background-color: var(--main-color-fn);
+    color: #ffff;
+    cursor: pointer;
+}
+.generator .contenu .color{
+    margin-top: 15px;
 }

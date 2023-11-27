@@ -26,6 +26,7 @@ const ctx = canvas.getContext('2d');
 const result = document.querySelector("#result");
 const download = document.querySelector("#c_download");
 
+const b_color_def = document.querySelector("#color_def");
 const b_color_red = document.querySelector("#color_red");
 const b_color_blue = document.querySelector("#color_blue");
 const twitter_result = document.querySelector("#twitter_result_img");
@@ -59,16 +60,23 @@ function getValue() {
         drawn()
     }
 }
+b_color_def.onclick = function (){
+    brume.src = "nuage/nuage_defaut.png";
+    color = "#ffff"
+    txt_style = "source-over"
+    drawn()
+}
 b_color_red.onclick = function (){
     brume.src = "nuage/nuage_red.png";
     color = "red"
-    txt_style = "source-over"
+    txt_style = "color"
     drawn()
 }
 b_color_blue.onclick = function (){
     brume.src = "nuage/nuage_blue.png";
     color = "#3ba4ff";
     txt_style = "color";
+    drawn()
 }
 
 fond1.onload = function (){
@@ -81,9 +89,11 @@ fond1.onload = function (){
     ctx.font = "600px 'Burbank Big Condensed Black'";
     ctx.shadowBlur = 30;
     ctx.shadowColor = "rgba(0,0,0,0.4)";
-    ctx.fillText("YO",canvas.width/2, canvas.height/1.8)
+    ctx.fillText("😎",canvas.width/2, canvas.height/1.8)
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(brume,0,0,800,800);
+    dataURL = canvas.toDataURL("image/png")
+    twitter_result.src = dataURL
 }
 
 function drawn(){
