@@ -220,10 +220,19 @@ main{
     margin: auto;
 }
 .sec2{
-    background-color: var(--main-color-fn);
-    clip-path: polygon(0 20%, 100% 0, 100% 90%, 0% 90%);
     height: 500px;
     position: relative;
+}
+.sec2 .contenu{
+    top: 10px;
+    position: relative;
+}
+.sec2 .fond{
+    position: relative;
+    top: 0;
+    height: 500px;
+    background-color: var(--main-color-fn);
+    clip-path: polygon(0 20%, 100% 0, 100% 90%, 0% 80%);
 }
 .title{
     color: var(--text-color-menu);
@@ -255,9 +264,9 @@ main{
     width: 700px;
     height: 233px;
     background-color: #0090e2;
-    background-image: url("Capture d'écran_20221204_231328.png");
+    background-image: url("https://pbs.twimg.com/media/F_8xlc5WcAAH0Yx?format=jpg&name=small");
     background-size: cover;
-    background-position: 0 -20px;
+    background-position: center;
 }
 .twitter .profile-top{
     display: flex;
@@ -426,20 +435,80 @@ main{
     text-align: center;
 }
 .generator .contenu .input-initial button{
-    color: var(--main-color-fn);
-    background-color: var(--bg-color-menu);
-    border: 2px var(--main-color-fn) solid;
+    color: #ffff;
+    border: none;
+    background-color: var(--main-color-fn);
     padding: 10px;
     position: relative;
     border-radius: 10px;
-    transition: all 0.1s ease-out;
+    transition: all 0.2s ease-out;
 
 }
 .generator .contenu .input-initial button:hover{
-    background-color: var(--main-color-fn);
+    background-color: #7e2e8c;
     color: #ffff;
     cursor: pointer;
 }
 .generator .contenu .color{
     margin-top: 15px;
+}
+.generator .contenu .color button{
+    color: white;
+    border: 2px #ffff solid;
+    background-color: var(--bg-color-menu);
+    padding: 5px;
+    position: relative;
+    border-radius: 5px;
+    transition: all 0.2s ease-out;
+}
+#color_def:hover{
+    color: var(--title-color);
+    border: 2px #ffff solid;
+    background-color: #ffff;
+    cursor: pointer;
+}
+#color_red{
+    color: #ee2f2f;
+    border: 2px #ee2f2f solid;
+}
+#color_red:hover{
+    color: var(--title-color);
+    background-color: #ee2f2f;
+    cursor: pointer;
+}
+#color_blue{
+    color: var(--main-color);
+    border: 2px var(--main-color) solid;
+}
+#color_blue:hover{
+    color: var(--title-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+}
+#color_yellow{
+    color: #eec12f;
+    border: 2px #eec12f solid;
+}
+#color_yellow:hover{
+    color: var(--title-color);
+    background-color: #eec12f;
+    cursor: pointer;
+}
+#color_purple{
+    color: var(--main-color-fn);
+    border: 2px var(--main-color-fn) solid;
+}
+#color_purple:hover{
+    color: var(--title-color);
+    background-color: var(--main-color-fn);
+    cursor: pointer;
+}
+#color_green{
+    color: #47c516;
+    border: 2px #47c516 solid;
+}
+#color_green:hover{
+    color: var(--title-color);
+    background-color: #47c516;
+    cursor: pointer;
 }

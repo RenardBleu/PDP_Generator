@@ -3,7 +3,7 @@
 let fond1=new Image();
 let fond2=new Image();
 let brume=new Image();
-fond2.src = "fond/The Big Bang Background.JPG"
+fond2.src = "fond/style2.png";
 fond1.src = "fond/style1.png";
 brume.src = "nuage/nuage_defaut.png";
 
