@@ -5,6 +5,10 @@ let fond2=new Image();
 let brume=new Image();
 fond2.src = "fond/style2.png";
 fond1.src = "fond/style1.png";
+brume.src = "nuage/nuage_yellow.png";
+brume.src = "nuage/nuage_blue.png";
+brume.src = "nuage/nuage_green.png";
+brume.src = "nuage/nuage_red.png";
 brume.src = "nuage/nuage_defaut.png";
 
 //Definition des varibales par défaut
@@ -14,6 +18,7 @@ let bg_style = fond1;
 let name = "";
 let color = "white"
 let txt_style = "source-over"
+let brume_active = false;
 
 //Recuperation des element dans le DOM
 
@@ -29,6 +34,11 @@ const download = document.querySelector("#c_download");
 const b_color_def = document.querySelector("#color_def");
 const b_color_red = document.querySelector("#color_red");
 const b_color_blue = document.querySelector("#color_blue");
+const b_color_yellow = document.querySelector("#color_yellow");
+const b_color_green = document.querySelector("#color_green");
+const b_color_purple = document.querySelector("#color_purple");
+const cloud = document.querySelector("#cloud");
+const b_color = document.querySelector(".button_color")
 const twitter_result = document.querySelector("#twitter_result_img");
 
 function getValue() {
@@ -39,7 +49,7 @@ function getValue() {
     if (initial.length > 3){
         console.log("Le text ne doit pas être supérieure à 3 lettre")
         name = "";
-        drawn()
+        drawn();
     } else {
         name = initial
         console.log(initial.length);
@@ -49,6 +59,7 @@ function getValue() {
 
     if (name.length === 1) {
         ctx.font = "800px 'Burbank Big Condensed Black'";
+        brume.loading
         drawn()
     }
     if (name.length === 2) {
@@ -57,24 +68,37 @@ function getValue() {
     }
     if (name.length === 3) {
         ctx.font = "400px 'Burbank Big Condensed Black'";
-        drawn()
+        drawn();
     }
 }
+
 b_color_def.onclick = function (){
-    brume.src = "nuage/nuage_defaut.png";
     color = "#ffff"
     txt_style = "source-over"
     drawn()
 }
 b_color_red.onclick = function (){
-    brume.src = "nuage/nuage_red.png";
     color = "red"
     txt_style = "color"
     drawn()
 }
 b_color_blue.onclick = function (){
-    brume.src = "nuage/nuage_blue.png";
     color = "#3ba4ff";
+    txt_style = "color";
+    drawn()
+}
+b_color_yellow.onclick = function (){
+    color = "#ffdc00";
+    txt_style = "color";
+    drawn()
+}
+b_color_green.onclick = function (){
+    color = "#226b11";
+    txt_style = "color";
+    drawn()
+}
+b_color_green.onclick = function (){
+    color = "#226b11";
     txt_style = "color";
     drawn()
 }
@@ -96,7 +120,28 @@ fond1.onload = function (){
     twitter_result.src = dataURL
 }
 
+
 function drawn(){
+    if (brume_active === true){
+        if (color === "#ffff"){ //Nuage Blanc
+            brume.src = "nuage/nuage_defaut.png";
+        };
+        if (color === "red"){ //Nuage Rouge
+            brume.src = "nuage/nuage_red.png";
+        };
+        if (color === "#3ba4ff"){ //Nuage Bleu
+            brume.src = "nuage/nuage_blue.png";
+        };
+        if (color === "#ead65d"){
+            brume.src = "nuage/nuage_yellow.png";
+        }
+        if (color === "#226b11"){
+            brume.src = "nuage/nuage_green.png";
+        }
+    }else {
+        brume.src = ""
+    };
+
     ctx.globalCompositeOperation = "source-over";
     //ctx.filter = "blur(10px)";
     ctx.drawImage(bg_style,0,0,);
@@ -114,11 +159,16 @@ function drawn(){
     ctx.fillText(name.toLocaleUpperCase(),canvas.width/2, canvas.height/1.8);
 
     ctx.globalCompositeOperation = "source-over";
-    ctx.drawImage(brume,0,0,800,800);
 
+    console.log("avant",brume)
+    brume.onload = function () {
+        console.log("c'est load")
+        ctx.drawImage(brume,0,0,800,800);
+    }
     dataURL = canvas.toDataURL("image/png")
     download.download = "PDP_" + initial + ".jpeg";
     twitter_result.src = dataURL
+    console.log("après",brume)
     // <a download="test.jpeg" href="#" id="c_download">Download</a>
 }
 
