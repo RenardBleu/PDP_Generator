@@ -15,10 +15,11 @@ brume.src = "nuage/nuage_defaut.png";
 let initial = "";
 let dataURL = "#";
 let bg_style = fond1;
-let name = "";
+let name = "😎";
 let color = "white"
 let txt_style = "source-over"
 let brume_active = false;
+
 
 //Recuperation des element dans le DOM
 
@@ -88,7 +89,7 @@ b_color_blue.onclick = function (){
     drawn()
 }
 b_color_yellow.onclick = function (){
-    color = "#ffdc00";
+    color = "#ffe000";
     txt_style = "color";
     drawn()
 }
@@ -97,8 +98,8 @@ b_color_green.onclick = function (){
     txt_style = "color";
     drawn()
 }
-b_color_green.onclick = function (){
-    color = "#226b11";
+b_color_purple.onclick = function (){
+    color = "#b426e1";
     txt_style = "color";
     drawn()
 }
@@ -113,13 +114,21 @@ fond1.onload = function (){
     ctx.font = "600px 'Burbank Big Condensed Black'";
     ctx.shadowBlur = 30;
     ctx.shadowColor = "rgba(0,0,0,0.4)";
-    ctx.fillText("😎",canvas.width/2, canvas.height/1.8)
+    ctx.fillText(name,canvas.width/2, canvas.height/1.8)
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(brume,0,0,800,800);
     dataURL = canvas.toDataURL("image/png")
     twitter_result.src = dataURL
 }
 
+if (cloud.checked){
+    console.log("test")
+    brume_active = true;
+    drawn();
+}else {
+    brume_active = false;
+    drawn();
+}
 
 function drawn(){
     if (brume_active === true){
@@ -138,9 +147,12 @@ function drawn(){
         if (color === "#226b11"){
             brume.src = "nuage/nuage_green.png";
         }
-    }else {
-        brume.src = ""
-    };
+        if (brume_active === false){
+            brume.src = ""
+        }
+    }
+
+    console.log(brume_active)
 
     ctx.globalCompositeOperation = "source-over";
     //ctx.filter = "blur(10px)";
@@ -164,10 +176,10 @@ function drawn(){
     brume.onload = function () {
         console.log("c'est load")
         ctx.drawImage(brume,0,0,800,800);
+        dataURL = canvas.toDataURL("image/png")
+        download.download = "PDP_" + initial + ".jpeg";
+        twitter_result.src = dataURL
     }
-    dataURL = canvas.toDataURL("image/png")
-    download.download = "PDP_" + initial + ".jpeg";
-    twitter_result.src = dataURL
     console.log("après",brume)
     // <a download="test.jpeg" href="#" id="c_download">Download</a>
 }
