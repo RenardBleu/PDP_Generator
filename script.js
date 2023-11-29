@@ -19,6 +19,7 @@ let name = "😎";
 let color = "white"
 let txt_style = "source-over"
 let brume_active = false;
+let txt_style_active = false
 
 
 //Recuperation des element dans le DOM
@@ -29,7 +30,6 @@ alert_initial.className = "alert_initial";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
 
-const result = document.querySelector("#result");
 const download = document.querySelector("#c_download");
 
 const b_color_def = document.querySelector("#color_def");
@@ -38,7 +38,8 @@ const b_color_blue = document.querySelector("#color_blue");
 const b_color_yellow = document.querySelector("#color_yellow");
 const b_color_green = document.querySelector("#color_green");
 const b_color_purple = document.querySelector("#color_purple");
-const cloud = document.querySelector("#cloud");
+const c_cloud = document.querySelector("#cloud");
+const c_txt_style = document.querySelector("#text-style");
 const b_color = document.querySelector(".button_color")
 const twitter_result = document.querySelector("#twitter_result_img");
 
@@ -73,35 +74,69 @@ function getValue() {
     }
 }
 
+c_txt_style.onclick = function (){
+    if (c_txt_style.checked === true){
+        txt_style_active = true;
+        drawn()
+    }else {
+        txt_style_active = false;
+        drawn();
+    }
+}
+
 b_color_def.onclick = function (){
     color = "#ffff"
-    txt_style = "source-over"
+    if (txt_style_active === true){
+        txt_style = "overlay"
+    } else {
+        txt_style = "source-over"
+    }
     drawn()
 }
 b_color_red.onclick = function (){
     color = "red"
-    txt_style = "color"
+    if (txt_style_active === true){
+        txt_style = "color"
+    } else {
+        txt_style = "source-over"
+    }
     drawn()
 }
 b_color_blue.onclick = function (){
     color = "#3ba4ff";
-    txt_style = "color";
+    if (txt_style_active === true){
+        txt_style = "color"
+    } else {
+        txt_style = "source-over"
+    }
     drawn()
 }
 b_color_yellow.onclick = function (){
     color = "#ffe000";
-    txt_style = "color";
+    if (txt_style_active === true){
+        txt_style = "color"
+    } else {
+        txt_style = "source-over"
+    }
     drawn()
 }
 b_color_green.onclick = function (){
     color = "#226b11";
-    txt_style = "color";
-    drawn()
+    if (txt_style_active === true){
+        txt_style = "color"
+    } else {
+        txt_style = "source-over"
+    }
+    drawn();
 }
 b_color_purple.onclick = function (){
     color = "#b426e1";
-    txt_style = "color";
-    drawn()
+    if (txt_style_active === true){
+        txt_style = "color"
+    } else {
+        txt_style = "source-over"
+    }
+    drawn();
 }
 
 fond1.onload = function (){
@@ -121,29 +156,54 @@ fond1.onload = function (){
     twitter_result.src = dataURL
 }
 
-cloud.onclick = function (){
-    if (cloud.checked === true){
-        console.log("test")
+c_cloud.onclick = function (){
+    if (c_cloud.checked === true){
         brume_active = true;
         drawn();
     }else {
         brume_active = false;
-        console.log("test marche pas")
         drawn();
     }
 }
 
 function drawn(){
+
+    console.log("brume :",brume_active,"txt transparent :", txt_style_active)
+
+    if (txt_style_active === true){
+        if (color === "#ffff"){ //Nuage Blanc
+            txt_style = "overlay";
+        }
+        if (color === "red"){ //Nuage Rouge
+            txt_style = "color";
+        }
+        if (color === "#3ba4ff"){ //Nuage Bleu
+            txt_style = "color";
+        }
+        if (color === "#ffe000"){
+            txt_style = "color";
+        }
+        if (color === "#226b11"){
+            txt_style = "color";
+        }
+        if (color === "#b426e1"){
+            txt_style = "color";
+        }else {
+            if (txt_style_active === false){
+                txt_style = "source-over";
+            }
+        }
+    }
     if (brume_active === true){
         if (color === "#ffff"){ //Nuage Blanc
             brume.src = "nuage/nuage_defaut.png";
-        };
+        }
         if (color === "red"){ //Nuage Rouge
             brume.src = "nuage/nuage_red.png";
-        };
+        }
         if (color === "#3ba4ff"){ //Nuage Bleu
             brume.src = "nuage/nuage_blue.png";
-        };
+        }
         if (color === "#ffe000"){
             brume.src = "nuage/nuage_yellow.png";
         }
