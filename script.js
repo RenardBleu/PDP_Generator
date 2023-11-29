@@ -121,13 +121,16 @@ fond1.onload = function (){
     twitter_result.src = dataURL
 }
 
-if (cloud.checked){
-    console.log("test")
-    brume_active = true;
-    drawn();
-}else {
-    brume_active = false;
-    drawn();
+cloud.onclick = function (){
+    if (cloud.checked === true){
+        console.log("test")
+        brume_active = true;
+        drawn();
+    }else {
+        brume_active = false;
+        console.log("test marche pas")
+        drawn();
+    }
 }
 
 function drawn(){
@@ -141,11 +144,14 @@ function drawn(){
         if (color === "#3ba4ff"){ //Nuage Bleu
             brume.src = "nuage/nuage_blue.png";
         };
-        if (color === "#ead65d"){
+        if (color === "#ffe000"){
             brume.src = "nuage/nuage_yellow.png";
         }
         if (color === "#226b11"){
             brume.src = "nuage/nuage_green.png";
+        }
+        if (color === "#b426e1"){
+            brume.src = "nuage/nuage_defaut.png";
         }
         if (brume_active === false){
             brume.src = ""
@@ -174,13 +180,14 @@ function drawn(){
 
     console.log("avant",brume)
     brume.onload = function () {
-        console.log("c'est load")
         ctx.drawImage(brume,0,0,800,800);
         dataURL = canvas.toDataURL("image/png")
         download.download = "PDP_" + initial + ".jpeg";
         twitter_result.src = dataURL
     }
-    console.log("après",brume)
+    dataURL = canvas.toDataURL("image/png")
+    download.download = "PDP_" + initial + ".jpeg";
+    twitter_result.src = dataURL
     // <a download="test.jpeg" href="#" id="c_download">Download</a>
 }
 
