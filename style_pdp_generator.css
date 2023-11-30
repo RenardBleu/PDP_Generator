@@ -170,8 +170,8 @@ nav {
 
 
 header {
-    background-image: url("/fond/The Big Bang Background.JPG");
-    background-position: 0 -450px;
+    background-image: url("/pdp_generator/fond/The Big Bang Background.JPG");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -203,6 +203,14 @@ header p{
 header img{
     height: 250px;
     align-items: center;
+}
+@media (max-width: 1500px){
+    header img{
+        height: 80px;
+        position: absolute;
+        left: 10px;
+        top: 70px;
+    }
 }
 
 
@@ -406,6 +414,25 @@ main{
     padding-right: 5px;
     color: #ffffff;
     font-weight: 700;
+}
+@media (max-width: 1500px){
+    .twitter-result{
+        margin-left: 50px;
+    }
+}
+@media (max-width: 1090px){
+    .sec1 {
+        display: block;
+        width: 100%;
+        .twitter{
+            border-radius: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .twitter-result{
+            margin-left: 0;
+        }
+    }
 }
 .generator{
     color: var(--text-color-menu);
