@@ -1,3 +1,5 @@
+@import url("font/BurbankBigCondensed-Black.otf");
+
 :root{
     --bg-color-dark: #111111;
     --bg-color-menu: #232323;
@@ -10,12 +12,7 @@
 
 @font-face {
     font-family: "Burbank Big Condensed Black";
-    src: url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.eot");
-    src: url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.svg#Burbank Big Condensed Black")format("svg");
+    src: url("font/BurbankBigCondensed-Black.otf");
 }
 *{
     margin: 0;
@@ -163,6 +160,12 @@ nav {
         display: flex;
     }
 
+}
+
+@media (max-width: 500px){
+    .navbar{
+        height: 35vh;
+    }
 }
 
 
