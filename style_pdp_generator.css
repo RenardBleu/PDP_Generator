@@ -423,20 +423,6 @@ main{
         margin-left: 50px;
     }
 }
-@media (max-width: 1090px){
-    .sec1 {
-        display: block;
-        width: 100%;
-        .twitter{
-            border-radius: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .twitter-result{
-            margin-left: 0;
-        }
-    }
-}
 .generator{
     color: var(--text-color-menu);
     justify-content: center;
@@ -598,4 +584,25 @@ main{
 .generator .contenu h2{
     padding-bottom: 10px;
     padding-top: 10px;
+}
+@media (max-width: 1090px){
+    .sec1 {
+        display: block;
+        width: 100%;
+    }
+    .twitter{
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .twitter-result{
+        margin-left: 0;
+    }
+    #pdp-element{
+        width: 550px;
+        border-radius: 20px;
+    }
+}
+.sec2{
+    color: #ffff;
 }
