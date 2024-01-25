@@ -3,13 +3,13 @@
 let fond1=new Image();
 let fond2=new Image();
 let brume=new Image();
-fond2.src = "/pdp_generator/fond/style2.png";
-fond1.src = "/pdp_generator/fond/style1.png";
-brume.src = "/pdp_generator/nuage/nuage_yellow.png";
-brume.src = "/pdp_generator/nuage/nuage_blue.png";
-brume.src = "/pdp_generator/nuage/nuage_green.png";
-brume.src = "/pdp_generator/nuage/nuage_red.png";
-brume.src = "/pdp_generator/nuage/nuage_defaut.png";
+fond2.src = "fond/style2.png";
+fond1.src = "fond/style1.png";
+brume.src = "nuage/nuage_yellow.png";
+brume.src = "nuage/nuage_blue.png";
+brume.src = "nuage/nuage_green.png";
+brume.src = "nuage/nuage_red.png";
+brume.src = "nuage/nuage_defaut.png";
 
 //Definition des varibales par défaut
 let initial = "";
