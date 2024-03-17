@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>PDP generator</title>
+    <meta name="viewport">
+    <title>Team renard | PDP générator</title>
+
+    <meta property="og:title" content="PDP Generator">
+    <meta property="og:site_name" content="Générateur de photo de profil fortnite">
+    <meta property="og:url" content="https://teamrenard.fr/pdp-generator/">
+    <meta property="og:description" content="Créer ta photo de profil fortnite gratuitement !">
+    <meta property="og:type" content="profile">
+    <meta property="og:image" content="https://teamrenard.fr/pdp-generator/exemple/pdp_exemple.jpeg">
+    <meta name="theme-color" content="#1c8d55">
+    <meta name="description" content="Créer et personnalise une photo de profil (PDP) dans le thème de la saison fortnite actuelle. Et ça gratuitement !">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo-renard-site.png">
+    <link rel="icon" type="image/x-icon" href="logo-renard-site.png">
 </head>
 <body>
 <nav>
-    <a href="/index.php" class="logo">
+    <a href="/" class="logo">
         <div class="icon">
             <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -20,74 +33,90 @@
         <span>Team Renard</span>
     </a>
     <ul class="navbar">
-        <li><a href="/index.html" class="active">Accueil</a></li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/pdp-generator/" class="active">PDP Generator</a></li>
     </ul>
     <div class="main">
         <i class="fa-sharp fa-solid fa-bars" id="menu-icon"></i>
     </div>
 </nav>
+<div class="alert">
+    <h3>Attention, tu ne peut mettre seulement que 3 lettres dans ta pdp !</h3>
+</div>
 <header>
-    <img src="The%20Big%20Bang%20Logo.PNG">
+    <img src="logo.webp" alt="petit logo d'orage">
     <div>
         <h1>Générateur de PDP</h1>
-        <p>Obtiens ta PDP sur le thème de l'événement de la saison OG !</p>
+        <p>Obtiens ta photo de profil sur le thème de la saison Mythes et Mortels !</p>
     </div>
 </header>
 <main>
     <section class="sec1">
         <div class="generator">
-            <h1 class="title">Modifie ta PDP</h1>
+            <h2 class="title">Modifie ta PDP</h2>
             <div class="contenu">
                 <canvas id="pdp-element" width="800" height="800"></canvas>
                 <div class="option">
                     <div class="input-initial">
-                        <input type="text" id="initial" placeholder="Initial (max 3 lettres)">
+                        <input type="text" id="initial" placeholder="Initiales (max 3 lettres)">
                         <button type="button" onclick="getValue();">Envoyer</button>
                     </div>
                     <div class="color">
-                        <h2>Couleur :</h2>
-                        <button class="button_color" id="color_def">Par défaut</button>
-                        <button class="button_color" id="color_red">Rouge</button>
-                        <button class="button_color" id="color_blue">Bleu</button>
-                        <button class="button_color" id="color_yellow">Jaune</button>
-                        <button class="button_color" id="color_green">Vert</button>
-                        <button class="button_color" id="color_purple">Violet</button>
+                        <h3>Couleur :</h3>
+                        <button class="button_color" id="color_def" onclick=" color = '#ffffff'; drawn(); lueur_verif();">Par défaut</button>
+                        <button class="button_color" id="color_beige" onclick=" color = '#d8b396'; drawn(); lueur_verif();">Beige</button>
+                        <button class="button_color" id="color_red" onclick=" color = '#EE2F2FFF'; drawn(); lueur_verif();">Rouge</button>
+                        <button class="button_color" id="color_blue" onclick=" color = '#32DED8FF'; drawn(); lueur_verif();">Bleu</button>
+                        <button class="button_color" id="color_yellow" onclick=" color = '#FFE000FF'; drawn(); lueur_verif();">Jaune</button>
+                        <button class="button_color" id="color_green" onclick=" color = '#419D2BFF'; drawn(); lueur_verif();">Vert</button>
+                        <button class="button_color" id="color_purple" onclick=" color = '#CA12FFFF'; drawn(); lueur_verif();">Violet</button>
+                        <button class="button_color" id="color_pink" onclick=" color = '#ff55c5'; drawn(); lueur_verif();">Rose</button>
+                        <button class="button_color" id="color_orange" onclick=" color = '#fa6b2d'; drawn(); lueur_verif();">Orange</button>
+                        <button class="button_color" id="color_black" onclick=" color = '#151515'; drawn(); lueur_verif();">Noir</button>
                     </div>
                     <div class="fond">
-                        <h2>Fond :</h2>
-                        <button id="back_style1" onclick="bg_style = fond1; drawn();">Par défaut</button>
-                        <button id="back_style2" onclick="bg_style = fond2; drawn();">Fond 2</button>
+                        <h3>Fond :</h3>
+                        <button id="back_style8" onclick="bg_style = bg.src = 'fond/default.png'; bg_loading();">Fond fortnite</button>
+                        <p>Fond mosaique :</p>
+                        <button id="back_style1" onclick="bg_style = bg.src = 'fond/fond_default.png'; bg_loading();">Par défaut</button>
+                        <button id="back_style2" onclick="bg_style = bg.src = 'fond/fond_bleu_vert.png'; bg_loading();">Shild</button>
+                        <button id="back_style3" onclick="bg_style = bg.src = 'fond/fond_magma.png'; bg_loading();">Magma</button>
+                        <button id="back_style4" onclick="bg_style = bg.src = 'fond/fond_bleu_violet.png'; bg_loading();">Bleu/violet</button>
+                        <p>Fond galactique :</p>
+                        <button id="back_style5" onclick="bg_style = bg.src = 'fond/fond-ciel.png'; bg_loading();">Teaser 1</button>
+                        <button id="back_style6" onclick="bg_style = bg.src = 'fond/fond-ciel2.png'; bg_loading();">Teaser 2</button>
+                        <button id="back_style7" onclick="bg_style = bg.src = 'fond/fond-ciel3.png'; bg_loading();">Teaser 3</button>
                     </div>
                     <div class="txt-style">
-                        <h2>Style suplémentaire :</h2>
-                        <div class="brume">
-                            <input id="cloud" type="checkbox"><p> Brume</p>
-                        </div>
+                        <h3>Style supplémentaire :</h3>
                         <div class="txt-transparent">
                             <input id="text-style" type="checkbox"><p>Texte transparent</p>
                         </div>
+                        <div class="txt-lueur">
+                            <input id="text-lueur" type="checkbox"><p>Texte lumineux</p>
+                        </div>
                     </div>
                     <div class="download">
-                        <a href="#" id="c_download">Download</a>
+                        <a href="#" id="c_download">Télécharger</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="twitter-result">
-            <h1 class="title">Aperçu sur Twitter ou x <span>(on s'en fiche...)</span></h1>
+            <h2 class="title">Aperçu sur Twitter ou x <span>(on s'en fiche...)</span></h2>
             <div class="twitter">
                 <div class="twiter-responsive">
                     <div class="top">
                         <i class="fa-solid fa-arrow-left"></i>
                         <div>
-                            <h2>IA Renard</h2>
+                            <h3>IA Renard</h3>
                             <p>42 posts</p>
                         </div>
 
                     </div>
                     <div class="banner"></div>
                     <div class="profile">
-                        <img width="150px" src="CautionMarkGraphic.PNG" id="twitter_result_img">
+                        <img width="150" src="CautionMarkGraphic.webp" id="twitter_result_img" alt="rendu photo de profil sur twitter">
                         <div class="profile-top">
                             <div class="button">
                                 <div class="plus">...</div>
@@ -120,34 +149,102 @@
         </div>
     </section>
     <section class="sec2">
+        <img class="exemple ex1" src="exemple/1.webp" alt="exemple1">
+        <img class="exemple ex2" src="exemple/2.webp" alt="exemple2">
+        <img class="exemple ex3" src="exemple/3.webp" alt="exemple3">
+        <img class="exemple ex4" src="exemple/4.webp" alt="exemple4">
+        <img class="bordure" src="bordure1.webp" alt="bordure de gauche">
         <div class="contenu">
-            <h1 class="title">À propos du site</h1>
-            <p>Bienvenue sur la partie de générateur de PDP du site, un projet dédié à la communauté dynamique de La Team Renard ! Ce site a été créé en reconnaissance de votre soutien continu et pour offrir une façon unique d'afficher vos couleurs sur Fortnite.</p>
+            <h2 class="title">Des PDP plus belle, plus extra !</h2>
+            <div>
+                <p>Tu veux une photo de profil qui sorte du lot ? Avec encore plus d'options ? <br>
+                    Eh bien, tu tombes bien, car j'offre des photos de profils personnalisé fait manuellement avec plus d'options pour <b>seulement 2,99 € </b> !</p>
+                <p>Comment faire pour en bénéficier ?<br>
+                    C'est très simple si tu es intéressé par cette offre, je t'invite à me contacter sur Twitter ou par mail "<b>renardbleu84100@gmail.com</b>" et de me faire ta demande.</p>
+                <p>Cette offre est <b>à vie</b> et tu ne seras pas obligé de payer pour ta prochaine demande.</p>
+            </div>
+            <div class="offre">
+                <span>2.99€</span>
+                <a href="https://twitter.com/renardbleu_of">Contacte-moi pour profiter de l'offre extra</a>
+            </div>
+        </div>
+        <img class="bordure" src="bordure2.webp" alt="bordure de droite">
+    </section>
+    <section class="sec3">
+        <div class="contenu">
+            <h2 class="title">À propos du site</h2>
+            <p>Bienvenue sur la partie de génération de PDP du site, un projet dédié à la communauté dynamique de La Team Renard ! Ce site a été créé en reconnaissance de votre soutien continu et pour offrir une façon unique d'afficher les couleurs de la saison Fortnite actuelle. Epic game n'est en aucun cas affilié à ce site</p>
             <article class="art1">
-                <h2>À Propos de La Team Renard</h2>
+                <h3>À Propos de La Team Renard</h3>
                 <p>La Team Renard va bien au-delà d'une simple communauté ; elle est un groupe soudé de renard partageant des passions communes. Ce site est notre moyen de vous exprimer notre gratitude pour votre fidélité et de vous permettre de personnaliser votre expérience en arborant fièrement les couleurs de la saison fortnite actuelle.</p>
             </article>
             <article class="art2">
-                <h2>Soutenez La Team Renard</h2>
-                <p>Vous avez le pouvoir de soutenir La Team Renard davantage ! Utilisez le code créateur "renardbleu" dans la boutique Fortnite lors de vos achats. Chaque contribution aide à renforcer notre communauté et à créer des opportunités pour des événements et des activités passionnants.</p>
+                <h3>Soutenez La Team Renard</h3>
+                <p>Vous avez le pouvoir de soutenir La Team Renard davantage ! Utilisez le <b>code créateur "renardbleu"</b> dans la boutique Fortnite lors de vos achats. Chaque contribution aide à renforcer notre communauté et à créer des opportunités pour des événements et des activités passionnants.</p>
             </article>
             <article class="art3">
-                <h2>Soutenez La Team Renard</h2>
-                <p>L'utilisation de PDPhoto Generator est soumise aux conditions suivantes :
+                <h3>Conditions d'utilisation</h3>
+                <p>L'utilisation de PDP Generator est soumise aux conditions suivantes : <br>
 
-                    Les images générées par PDPhoto Generator sont destinées à un usage personnel et ne doivent pas être utilisées à des fins commerciales sans autorisation préalable.
+                    Les images générées par PDP Generator sont destinées à un usage personnel et ou commerciales.
 
-                    L'utilisation du code créateur "renardbleu" dans la boutique Fortnite est une manière de soutenir La Team Renard. Nous vous encourageons à l'utiliser de manière responsable et respectueuse.
+                    Nous vous encourageons à l'utiliser de manière responsable et respectueuse.
 
-                    Toute tentative de vol, de reproduction ou de distribution non autorisée du contenu de ce site est strictement interdite et sera sujette à des mesures légales.
+                    Toute tentative de vol, de reproduction ou de distribution non autorisée du contenu de ce site est strictement interdite et sera sujet à des mesures légales.<br>
 
                     Merci de faire partie de La Team Renard, et ensemble, continuons à vivre de grandes aventures dans l'univers de Fortnite !</p>
             </article>
         </div>
         <div class="fond"></div>
     </section>
+    <section class="sec4">
+        <img src="code-crea.webp" alt="code creéateur renard bleu">
+        <h2>un p'tit soutien please ?</h2>
+        <h2>code créateur : renardbleu</h2>
+    </section>
+
+    <a href="#" class="mouv-up">Revenir en haut de page</a>
 </main>
-<footer></footer>
+<footer>
+    <div class="footer-tow-title">
+        <div class="about-site">
+            <h2>À Propos du site</h2>
+            <p>Ce site a été entièrement programmé par renard bleu pour sa communauté, le team renard. Ce site est un outil pratique et utile pour eux. D'autres nouveautés arrivent sur ce site alors restez à l'affût !</p>
+        </div>
+        <div class="soutien">
+            <h2>Nous soutenir</h2>
+            <p>Mettre le code créateur renardbleu</p>
+            <p>Nous suivre sur les réseaux</p>
+        </div>
+        <div class="contact">
+            <h2>Nous contacter</h2>
+            <a class="mail" href="mailto:contact@teamrenard.fr">contact@teamrenard.fr</a>
+            <a class="mail" href="mailto:renardbleu84100@gmail.com">renardbleu84100@gmail.com</a>
+        </div>
+    </div>
+    <div>
+        <hr>
+        <a href="https://twitter.com/renardbleu_of" target="_blank">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.youtube.com/c/renardbleu" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.tiktok.com/@renard_bleu_of" target="_blank">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/renard_bleu_of" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://github.com/RenardBleu" target="_blank">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+            <i class="fa-brands fa-discord"></i>
+        </a>
+        <p>© Renard Bleu Studio, 2024. Tous droits réservés.</p>
+    </div>
+</footer>
 <script src="script.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
