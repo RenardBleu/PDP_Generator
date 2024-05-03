@@ -114,6 +114,7 @@ function bg_loading(){
 }
 
 function drawn(){
+
     ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(bg_load,0,0, canvas.width, canvas.height);
     ctx.textAlign = "center";
